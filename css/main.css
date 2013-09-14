@@ -113,6 +113,11 @@ ul.posts span {
   float: right;
 }
 
+.site img {
+  display: block;
+  margin: 20px auto;
+}
+
 .site .footer .rss img {
   border: 0;
 }
@@ -124,10 +129,11 @@ ul.posts span {
 /*****************************************************************************/
 
 /* standard */
-.post pre {
+.highlight {
   border: 1px solid #ddd;
   background-color: #eef;
   padding: 0 .4em;
+  overflow-x: scroll;
 }
 
 .post ul, .post ol {
@@ -149,6 +155,7 @@ ul.posts span {
   border: 1px solid #000;
   background-color: #333;
   color: #FFF;
+  margin: 20px 0;
 }
 
 .post pre.terminal code {
