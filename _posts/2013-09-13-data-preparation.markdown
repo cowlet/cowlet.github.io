@@ -3,6 +3,18 @@ layout: post
 title:  "Data preparation"
 ---
 
+<h2>Overview</h2>
+This article shows how to import and start understanding data using R. Using an open dataset of bearing vibration experiments, it contains code and explanation of how to:
+<ul>
+  <li>Read data into R</li>
+  <li>Generate simple stats and plots for initial visualisation</li>
+  <li>Perform a Fast Fourier Transform (FFT) on vibration data</li>
+  <li>Calculate key features of the data</li>
+  <li>Visualise and analyse the feature space</li>
+</ul>
+
+<h2>Problem scoping</h2>
+
 The first step of working with data is to get it into whatever tool or environment you're working in. This can take a surprising length of time, since even the cleanest, best formatted data will have some curious feature such as a weird timestamp format, and in most instances the data will have gaps and bad readings that will have to be handled somehow.
 
 The data I'm using is from the [Prognostics Data Repository hosted by NASA][nasa], and specifically the [Bearing data set, IMS, University of Cincinnati][bearingset] from J. Lee, H. Qiu, G. Yu, J. Lin, and Rexnord Technical Services, 2007 (warning: 780MB download). This data relates to four bearings installed on a loaded rotating shaft, with a constant speed of 2000rpm. The bearings have a design life of 100,000,000 revolutions. Assuming constant use and speed, this is 50,000 minutes, 833 hours, or 34.7 days. The test set-up is shown below (from [Qiu et al][qiu]):
@@ -11,7 +23,7 @@ The data I'm using is from the [Prognostics Data Repository hosted by NASA][nasa
 [bearingset]: http://ti.arc.nasa.gov/c/3/
 [qiu]:       http://www.sciencedirect.com/science/article/pii/S0022460X0500221X
 
-![Bearing experiment set-up, Qiu et al.]({{ site.url }}/assets/qiu-et-al.jpg)
+![Bearing experiment set-up, Qiu et al.](/assets/qiu-et-al.jpg)
 
 Bearings are key components of any type of rotating machinery, from consumer level devices such as a desk fan, up to industrial plant such as in nuclear power stations. Anything with a motor or generator rotates a shaft, and the health of the bearings determines how smoothly and efficiently that shaft rotates. Poor lubrication of the bearing will generate extra friction, which reduces efficiency and can also damage the bearing or shaft. In the worst cases, the bearing can scuff or crack, and metal particles break free to hit and damage other parts of the machine.  
 
@@ -62,7 +74,7 @@ plot(data$b1.x, type="l") # make it a line plot
         Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
     -0.72000 -0.14600 -0.09500 -0.09459 -0.04200  0.38800 
 
-![Plot of bearing 1 x axis vibration]({{ site.url }}/assets/first-b1x.png)
+![Plot of bearing 1 x axis vibration](/assets/first-b1x.png)
 
 Looking just at the x-axis of bearing 1 to start with, we can see that the mean vibration value is less than 1, and mostly within the band between 0.0 and -0.2. The max and min values (0.388 and -0.720) are outliers, but not orders of magnitude different from the rest of the data, and therefore can't be discounted as bad data. The spikes in value seem regularly spaced, and a spike in negative value always seems to correspond with an extreme positive value, which tends to suggest these outliers are true measurements. The same analysis of the other columns shows very similar patterns, with a slight tendency for the y axes to have a mean closer to 0, but higher extreme values. 
 
@@ -96,7 +108,7 @@ frequency <- seq(0, 10000, length.out=length(b1.x.fft)/2)
 plot(amplitude ~ frequency, t="l")
 {% endhighlight %}
 
-![FFT of bearing 1 x-axis vibration]({{ site.url }}/assets/fft-b1x.png)
+![FFT of bearing 1 x-axis vibration](/assets/fft-b1x.png)
 
 Great! You can see that all the good stuff is going on down at the lower frequencies, although there is a ripple of activity just above and below 4kHz, and around 8kHz. For now, let's focus on the lower frequencies. 
 
@@ -106,7 +118,7 @@ axis(1, at=seq(0,1000,100), labels=FALSE)  # add more ticks
 axis(1, at=seq(0,100,10), labels=TRUE) # add labels only every 10th
 {% endhighlight %}
 
-![Plot of low frequencies of bearing 1 x-axis FFT]({{ site.url }}/assets/fft-zoomed-b1x.png)
+![Plot of low frequencies of bearing 1 x-axis FFT](/assets/fft-zoomed-b1x.png)
 
 The tallest spikes by far are just below 1kHz. Generally the dc term (zero frequency) of an FFT can be ignored, as it always dominates and doesn't really contain information. There is also a large spike just below 500Hz, and two around 50Hz. Tabulating the top 20 frequencies gives:
 
@@ -121,20 +133,96 @@ top15f <- frequency[top15] # convert indexes to frequencies
 
 So those outliers we can see are at 49.8Hz, 57.6Hz, and 493Hz. Interestingly, the second and fourth largest frequencies have a harmonic relationship (493 * 2 = 986), which strongly suggests they are linked. 
 
-For now, I'll take the frequencies of the largest 15 harmonics to be our features.
-
-
-
-The timestamp is contained within the filename. Assuming we have the filename as a string in `filename`, it can be parsed like this:
+For now, I'll focus on the frequencies of the largest 5 frequencies. Since each bearing has an x and y axis, this means we have 10 features total. I'll wrap the FFT profiling code in a function for ease of use later:
 
 {% highlight r %}
-timestamp <- strptime(filename, format="%Y.%m.%d.%H.%M.%S")
+fft.profile <- function (dataset, n)
+{
+	fft.data <- fft(dataset)
+	amplitude <- Mod(fft.data[1:(length(fft.data)/2)])
+	frequencies <- seq(0, 10000, length.out=length(fft.data)/2)
+
+	sorted <- sort.int(amplitude, decreasing=TRUE, index.return=TRUE)
+	top <- sorted$ix[1:n] # indexes of the largest n components
+	return (frequencies[top]) # convert indexes to frequencies
+}
+
 {% endhighlight %}
 
+It's a good idea to timestamp the data, since we have that information in the filename. With a variable called `filename`, it can be parsed like this:
 
-Finally, the timestamp and features need to be written to a new matrix, and a new row added every time a file is processed. The code for this is below:
+{% highlight r %}
+timestamp <- as.character(strptime(filename, format="%Y.%m.%d.%H.%M.%S"))
+{% endhighlight %}
 
-TODO
+Then the timestamp and features can be combined into a single row like this:
+
+{% highlight r %}
+c(timestamp, fft.profile(data$b1.x, n), fft.profile(data$b1.y, n))
+{% endhighlight %}
+
+For each file, this row needs to be calculated and added to the end of a bearing matrix. Since there are four bearings, I'll use four matrices. It is possible to condense these into a single matrix (which would remove the repeated lines of code), but it's conceptually simpler to separate the bearing data. The code to create the matrices, process the files, and write the completed bearing matrices out to file is this:
+
+{% highlight r %}
+# How many FFT components should we grab as features?
+n <- 5
+
+# Set up storage for bearing-grouped data
+b1 <- matrix(nrow=0, ncol=(2*n+1))
+b2 <- matrix(nrow=0, ncol=(2*n+1))
+b3 <- matrix(nrow=0, ncol=(2*n+1))
+b4 <- matrix(nrow=0, ncol=(2*n+1))
+
+for (filename in list.files(basedir))
+{
+	cat("Processing file ", filename, "\n")
+	
+	timestamp <- as.character(strptime(filename, format="%Y.%m.%d.%H.%M.%S"))
+	
+	data <- read.table(paste0(basedir, filename), header=FALSE, sep="\t")
+	colnames(data) <- c("b1.x", "b1.y", "b2.x", "b2.y", "b3.x", "b3.y", "b4.x", "b4.y")
+	
+	# Bind the new rows to the bearing matrices
+    b1 <- rbind(b1, c(timestamp, fft.profile(data$b1.x, n), fft.profile(data$b1.y, n)))
+    b2 <- rbind(b2, c(timestamp, fft.profile(data$b2.x, n), fft.profile(data$b2.y, n)))
+    b3 <- rbind(b3, c(timestamp, fft.profile(data$b3.x, n), fft.profile(data$b3.y, n)))
+    b4 <- rbind(b4, c(timestamp, fft.profile(data$b4.x, n), fft.profile(data$b4.y, n)))
+
+}
+
+write.table(b1, file=paste0(basedir, "../b1.csv"), sep=",", row.names=FALSE, col.names=FALSE)
+write.table(b2, file=paste0(basedir, "../b2.csv"), sep=",", row.names=FALSE, col.names=FALSE)
+write.table(b3, file=paste0(basedir, "../b3.csv"), sep=",", row.names=FALSE, col.names=FALSE)
+write.table(b4, file=paste0(basedir, "../b4.csv"), sep=",", row.names=FALSE, col.names=FALSE)
+{% endhighlight %}
+
+As a final step, we should check that these features change over the life of the bearings. The experiment write-up says that bearings 3 and 4 failed at the end of the test, while 1 and 2 remained in service. Therefore it should be expected that all bearings start their life looking somewhat similar, with bearings 3 and 4 diverging away from this norm towards the end of the dataset.
+
+
+![1st FFT component in x and y axes](/assets/1st-comp.png)
+
+In both the x and y axes for all bearings, the dominant FFT component is the dc term, with the single exception of the final measurement from bearing 3 in the x axis. This is not very informative overall, as it would be better to see a trend towards failure rather than the failure itself.
+
+![2nd FFT component in x and y axes](/assets/2nd-comp.png)
+
+The second strongest components shows the exact pattern I expect (the colours are consistent in all plots). Bearings 1 and 2 show the same frequency throughout their lives. Bearing 4 in green starts to show a shift in frequency about two thirds of the way through the test, in both axes. A third frequency starts to occur closer to the point of failure. 
+
+Bearing 2 in orange displays a very different pattern of behaviour in the y axis from all other bearings, and shows occasional anomalies in the x axis. It is hard to tell purely from the data whether this shows a weak bearing or installation right from the start of the test. Regardless, the y axis starts to show unusual frequencies from just past halfway through the test, which become more constant as failure approaches. The x axis also shows new frequencies right before the failure occurs.
+
+![3rd FFT component in x and y axes](/assets/3rd-comp.png)
+
+The patterns of the third strongest components are not as clear as above, since bearings 1 and 2 also show some deviations from their starting behaviour towards the end of the test. Further data analysis is likely to be able to pull more information out of thse traces than simply eyeballing the plots.
+
+The 4th and 5th strongest components display similar patterns to the 3rd.
+
+![4th FFT component in x and y axes](/assets/4th-comp.png)
+![5th FFT component in x and y axes](/assets/5th-comp.png)
+
+<h2>Conclusion</h2>
+
+Visual analysis of these FFT component plots suggests that these are reasonable features for describing the bearing vibration data. Since the 2nd strongest FFT component of both the x and y axes displays the pattern I was expecting, this is good evidence for being a high-information feature. Further, we've reduced the dataset from over 44 million individual datapoints per bearing to 21,560 (10 features from 2,156 samples). This is significantly easier to process with desktop resources, and therefore enables more rapid next-stage analysis.
+
+To take this further, the next stage of analysis should look at modelling deterioration of the bearings, with the aim of detecting or predicting bearing faults. There are many different techniques that could be used for this, and technique selection generally requires a bit of trial and error. However, the framework for feature extraction demonstrated in this article gives a platform for any further analysis required. 
 
 
 
