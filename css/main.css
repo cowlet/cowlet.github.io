@@ -46,6 +46,8 @@ p code {
 
 p img {
   max-width: 100%;
+  margin: 0 auto;
+  display: block;
 }
 
 
@@ -85,6 +87,55 @@ pre {
   border-top: 2px solid #999;
 }
 
+@media (min-width: 768px) {
+  .container {
+    max-width: 32em;
+    margin: 1em auto;
+    font-size: 22px;
+    line-height: 1.5em;
+  }
+
+  h1 {
+    font-size: 44px;
+    line-height: 1em;
+  }
+
+  h2 {
+    font-size: 33px;
+    line-height: 1em;
+  }
+
+  h3 {
+    font-size: 22px;
+    line-height: 1.5em;
+  }
+
+  .header .title a {
+    font-size: 33px;
+  }
+
+  pre {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+@media (min-width: 480px) {
+  .footer {
+    overflow: auto;
+  }
+
+  .footer .contact {
+    width: 50%;
+    float: left;
+  }
+
+  .footer .links {
+    width: 50%;
+    float: right;
+    text-align: right;
+  }
+}
 
 
 
