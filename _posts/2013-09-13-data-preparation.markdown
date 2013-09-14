@@ -33,8 +33,6 @@ head(data)
 
 Calling `head` on the data is just to check that the read has done what we expect, and should give this:
 
-<pre class="terminal">
-<code>
           V1     V2     V3     V4     V5     V6     V7     V8
     1 -0.022 -0.039 -0.183 -0.054 -0.105 -0.134 -0.129 -0.142
     2 -0.105 -0.017 -0.164 -0.183 -0.049  0.029 -0.115 -0.122
@@ -42,8 +40,6 @@ Calling `head` on the data is just to check that the read has done what we expec
     4 -0.178 -0.161 -0.159 -0.178 -0.100 -0.115 -0.112 -0.078
     5 -0.208 -0.129 -0.261 -0.098 -0.151 -0.205 -0.063 -0.066
     6 -0.232 -0.061 -0.281 -0.125  0.046 -0.088 -0.078 -0.078
-</code>
-</pre>
 
 These column names are not very intuitive, so we can rename them like this:
 
@@ -63,12 +59,8 @@ summary(data$b1.x)
 plot(data$b1.x, type="l") # make it a line plot
 {% endhighlight %}
 
-<pre class="terminal">
-<code>
         Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
     -0.72000 -0.14600 -0.09500 -0.09459 -0.04200  0.38800 
-</code>
-</pre>
 
 ![Plot of bearing 1 x axis vibration]({{ site.url }}/assets/first-b1x.png)
 
@@ -124,12 +116,8 @@ top15 <- sorted$ix[1:15] # indexes of the largest 15
 top15f <- frequency[top15] # convert indexes to frequencies
 {% endhighlight %}
 
-<pre class="terminal">
-<code>
      [1]    0.00000  986.42446  993.26106  493.21223  979.58785  994.23772  969.82127  971.77459
      [9]   57.62281  978.61119  921.96504   49.80955 4420.35355 3606.79754 4327.57105
-</code>
-</pre>
 
 So those outliers we can see are at 49.8Hz, 57.6Hz, and 493Hz. Interestingly, the second and fourth largest frequencies have a harmonic relationship (493 * 2 = 986), which strongly suggests they are linked. 
 

@@ -1,43 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
-        <meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span class="title"><a href="/">Victoria Catterson</a></span>
+      </div>
 
-        <!-- syntax highlighting CSS -->
-        <link rel="stylesheet" href="/css/syntax.css">
+      {{ content }}
 
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="/css/main.css">
-
-    </head>
-    <body>
-
-        <div class="site">
-          <div class="header">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-            <a class="extra" href="/">home</a>
-          </div>
-
-          {{ content }}
-
-          <div class="footer">
-            <div class="contact">
-              <p>
-                Victoria Catterson<br />
-                vic@cowlet.org
-              </p>
-            </div>
-            <div class="contact">
-              <p>
-                <a href="https://github.com/cowlet">github.com/cowlet</a><br />
-                <a href="https://twitter.com/cowlet">twitter.com/cowlet</a><br />
-              </p>
-            </div>
-          </div>
+      <div class="footer">
+        <div class="contact">
+          <p>
+          Victoria Catterson<br />
+          vic@cowlet.org
+          </p>
         </div>
-
-    </body>
+        <div class="links">
+          <p>
+          <a href="https://github.com/cowlet">github.com/cowlet</a><br />
+          <a href="https://twitter.com/cowlet">twitter.com/cowlet</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

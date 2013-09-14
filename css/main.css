@@ -1,163 +1,90 @@
-/*****************************************************************************/
-/*
-/* Common
-/*
-/*****************************************************************************/
-
-/* Global Reset */
 * {
-  margin: 0;
-  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body { height: 100%; }
-
-body {
-  background-color: #FFF;
-  font: 20px Helvetica, Arial, sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-size: 100%; }
-
-h1 { margin-bottom: 1em; }
-p { margin: 1em 0; }
-
-a         { color: #00a; }
-a:hover   { color: #000; }
-a:visited { color: #449; }
-
-/*****************************************************************************/
-/*
-/* Home
-/*
-/*****************************************************************************/
-ul.posts {
-  list-style-type: none;
-  margin-bottom: 2em;
-}
-
-ul.posts li {
-  line-height: 1.75em;
-}
-
-ul.posts span {
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
-}
-
-/*****************************************************************************/
-/*
-/* Site
-/*
-/*****************************************************************************/
-
-.site {
-  width: 42em;
-  margin: 3em auto 2em;
+.container {
+  margin: 1em;
+  font-size: 18px;
   line-height: 1.5em;
 }
 
-.site .header a {
-  font-weight: bold;
+h1 {
+  font-size: 36px;
+  line-height: 1em;
+}
+
+h2 {
+  font-size: 27px;
+  line-height: 1em;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+a {
+  color: #00c;
   text-decoration: none;
 }
 
-.site .header h1.title {
-  display: inline-block;
-  margin-bottom: 2em;
+a:hover {
+  text-decoration: underline;
 }
 
-.site .header h1.title a {
+a:visited {
+  color: #007;
+}
+
+p code {
+  border: 1px dotted #999;
+  background: #ddf;
+  padding: 0 0.2em;
+}
+
+p img {
+  max-width: 100%;
+}
+
+
+
+pre {
+  font-size: 14px;
+  line-height: 18px;
+  width: 100%;
+  overflow-x: scroll;
+  border: 2px solid #999;
+  margin: 1em 0;
+  padding: 0 1em;
+  white-space: pre;
+}
+
+.highlight pre {
+  background: #ffd;
+}
+
+.post > pre {
+  background: #ddd;
+}
+
+.meta {
+  color: #999;
+}
+
+.header .title a {
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 24px;
   color: #a09;
 }
 
-.site .header h1.title a:hover {
-  color: #000;
-}
-
-.site .header a.extra {
-  color: #aaa;
-  margin-left: 1em;
-}
-
-.site .header a.extra:hover {
-  color: #000;
-}
-
-.site .meta {
-  color: #aaa;
-}
-
-.site .footer {
-  font-size: 80%;
-  color: #666;
-  border-top: 4px solid #eee;
+.footer {
   margin-top: 2em;
-  overflow: hidden;
+  border-top: 2px solid #999;
 }
 
-.site .footer .contact {
-  float: left;
-  margin-right: 3em;
-}
 
-.site .footer .contact a {
-  color: #8085C1;
-}
 
-.site .footer .rss {
-  margin-top: 1.1em;
-  margin-right: -.2em;
-  float: right;
-}
 
-.site img {
-  display: block;
-  margin: 20px auto;
-}
-
-.site .footer .rss img {
-  border: 0;
-}
-
-/*****************************************************************************/
-/*
-/* Posts
-/*
-/*****************************************************************************/
-
-/* standard */
-.highlight {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .4em;
-  overflow-x: scroll;
-}
-
-.post ul, .post ol {
-  margin-left: 1.35em;
-}
-
-.post code {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .2em;
-}
-
-.post pre code {
-  border: none;
-}
-
-/* terminal */
-.post pre.terminal {
-  border: 1px solid #000;
-  background-color: #333;
-  color: #FFF;
-  margin: 20px 0;
-}
-
-.post pre.terminal code {
-  background-color: #333;
-}
