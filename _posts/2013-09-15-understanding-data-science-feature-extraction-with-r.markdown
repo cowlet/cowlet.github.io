@@ -3,9 +3,7 @@ layout: post
 title:  "Understanding data science: feature extraction with R"
 ---
 
-Getting started with data science can be intimidating. Where do you start?
-
-This article shows one way to get going: using [R][r] to examine an open dataset. Keep reading for a walkthrough of how to:
+Getting stuck in to a data science problem can be intimidating. This article shows one way to start, by using [R][r] to examine an open dataset. Keep reading for a walkthrough of how to:
 
 * Read data into R
 * Generate simple stats and plots for initial visualisation
