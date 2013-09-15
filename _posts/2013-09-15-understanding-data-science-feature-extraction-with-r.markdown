@@ -85,7 +85,7 @@ plot(data$b1.x, t="l") # t="l" means line plot
 
 ![Plot of bearing 1 x axis vibration](/assets/first-b1x.png)
 
-Looking just at the x axis of bearing 1 to start with, you can see that the mean vibration value is less than 1, and mostly within the band between 0.0 and -0.2. The max and min values (0.388 and -0.720) are outliers, but not orders of magnitude different from the rest of the data, and therefore can't be discounted as bad data. The spikes in value seem regularly spaced, and a spike in negative value always seems to correspond with an extreme positive value, which tends to suggest these outliers are true measurements. Analysis of the other columns shows very similar patterns, with a slight tendency for the y axes to have a mean closer to 0, but higher extreme values. 
+Looking just at the x axis of bearing 1 to start with, you can see that the mean vibration value is less than 0, and mostly within the band between 0.0 and -0.2. The max and min values (0.388 and -0.720) are outliers, but not orders of magnitude different from the rest of the data, and therefore can't be discounted as bad data. The spikes in value seem regularly spaced, and a spike in negative value always seems to correspond with an extreme positive value, which tends to suggest these outliers are true measurements. Analysis of the other columns shows very similar patterns, with a slight tendency for the y axes to have a mean closer to 0, but higher extreme values. 
 
 Each plot represents a one second snapshot in the life of that bearing. To perform an analysis of the data, I need to consider all of the snapshots together. Obviously, looking at every plot isn't going to work, so how do I process the data?
 
@@ -106,7 +106,7 @@ To begin with, I'll take the engineering approach. Time to extract some features
 
 To collect the data into a format useful for further analysis, I need to process the 2,156 time ordered source files into 4 files of bearing-specific data. Each bearing file will contain 2,156 rows (one per source file), containing the timestamp and key features calculated from both the x and y axes. 
 
-Conventional wisdom for bearing analysis says that the most important features are the amplitude of vibration at key frequencies, relating to rotation and spin of the bearing elements. Since I don't have the engineering specs for the bearing, these frequencies are difficult to calculate. So for now, I'll take more of a data-driven approach and focus on patterns in the data.
+Conventional wisdom for bearing analysis says that the most important features are the levels of vibration at key frequencies, relating to rotation and spin of the bearing elements. Since I don't have the engineering specs for the bearing, these frequencies are difficult to calculate. So for now, I'll take more of a data-driven approach and focus on patterns in the data.
 
 A vibration signal can be decomposed into its frequency components using the Fast Fourier Transform (FFT). Simply calling the R function `fft` returns data in an unfriendly format, but it's straightforward to turn it into a more intuitive version:
 
@@ -128,10 +128,9 @@ Great! You can see that all the good stuff is going on down at the lower frequen
 {% highlight r %}
 plot(amplitude ~ frequency, t="l", xlim=c(0,1000), ylim=c(0,500))
 axis(1, at=seq(0,1000,100), labels=FALSE)  # add more ticks
-axis(1, at=seq(0,100,10), labels=TRUE) # add labels only every 10th
 {% endhighlight %}
 
-![Plot of low frequencies of bearing 1 x axis FFT](/assets/fft-zoomed-b1x.png)
+![Plot of low frequencies of bearing 1 x axis FFT](/assets/fft-zoomed-b1x-2.png)
 
 Other than the dc term (at 0Hz), the tallest spikes are just below 1kHz. There is also a large spike just below 500Hz, and two around 50Hz. Tabulating the top 15 frequencies gives:
 
@@ -235,7 +234,7 @@ The 4th and 5th strongest components display similar patterns to the 3rd:
 
 Plotting graphs and scanning for patterns is a key part of data science. However, this bearing vibration data set is too large to do this for all of the data. With a few hours of work, I reduced it to a more manageable size using some simple feature extraction techniques: frequency analysis, and extraction of key components.
 
-Looking at plots of these extracted features confirms that they usefully describe the bearing vibration data. The 2nd strongest FFT component of both the x and y axes displays the pattern I was expecting, which is good evidence for being a high-information feature.
+Looking at plots of these extracted features confirms that they usefully describe the bearing vibration data. The second strongest FFT component of both the x and y axes displays the pattern I was expecting, which is good evidence for being a high-information feature.
 
 Most importantly, I reduced the dataset from over 44 million individual datapoints per bearing to 21,560. This is significantly easier to visualise and process on a desktop computer, and therefore makes the next stages much easier.
 
