@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "An introduction to data science"
+description: "Data science combines data mining, database design, machine learning, and psychology of data visualisation."
 ---
 
 Everyone is talking about data science these days. The profusion of cheap and ubiquitous sensors and storage means that we have access to unprecedented levels of raw data. This data can certainly tell us something useful and interesting, but finding out exactly what that is and how to extract it can be a significant challenge.
