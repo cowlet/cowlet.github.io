@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Understanding data science: feature extraction with R"
-description: "Data science starts with visualising and condensing your data using feature extraction. Here's how to do it!"
+description: "Getting stuck in to a data science problem can be intimidating. This article shows one way to start, by using R to examine an open dataset."
 ---
 
 Getting stuck in to a data science problem can be intimidating. This article shows one way to start, by using [R][r] to examine an open dataset. Keep reading for a walkthrough of how to:
