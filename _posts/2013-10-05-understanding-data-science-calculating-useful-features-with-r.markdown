@@ -28,11 +28,15 @@ For the [bearing dataset from University of Cincinnati][bearingset], I'll explor
 
 ## Domain-specific features
 
-Conventional wisdom for bearing analysis says that the most important features are the amplitude of vibration at key frequencies: the ball pass outer race (BPFO), ball pass inner race (BPFI), ball spin frequency (BSF), and fundamental train frequency (FTF). (For [detailed explanation][mobius] and [equations][equns], please follow these links.) We can calculate these frequencies for the experimental bearings, using [data contained in this paper][phm-paper].
+[As described before][feature-extraction], there is a lot of engineering experience with bearings, since they are so widely used. As a result, it's quite well understood that particular types of bearing failure will affect the vibration profile in different ways. There are four key frequencies that are recommended for monitoring, called the ball pass outer race (BPFO), ball pass inner race (BPFI), ball spin frequency (BSF), and fundamental train frequency (FTF). 
+
+If there is a problem such as a crack on one of the balls within the bearing (more properly called a _rolling element_ of the bearing), it will reduce the smoothness of rotation by hitting or bouncing as it comes into contact with other components. If the crack hits a neighbouring rolling element, it will generate increased vibration at the ball spin frequency (BSF), since once per rotation the crack will come back into contact with the neighbour. Alternatively, if the crack is in the _outer race_ (the outer casing surrounding and containing all the rolling elements), it will increase vibration at the BPFO, since this is the frequency at which rolling elements come into contact with a point on the outer race. ([More explanation of these four frequencies is given by the Mobius Institute][mobius].)
+
+To calculate these four frequencies for the dataset bearings, we need some specific information about the structure and size of the bearing components. This can be found in a [paper published by the team who ran the experiment][qiu], and reproduced below. We also need the [equations for calculating BPFO, BPFI, BSF, and FTF][equns], which are widely available online. The R code for the calculations is:
 
 [mobius]:   http://www.mobiusinstitute.com/articles.aspx?id=2088
 [equns]:    http://www.ntnamericas.com/en/website/documents/brochures-and-literature/tech-sheets-and-supplements/frequencies.pdf
-[ph-paper]: https://www.phmsociety.org/sites/phmsociety.org/files/phm_submission/2009/phmc_09_018.pdf
+[qiu]:      http://www.sciencedirect.com/science/article/pii/S0022460X0500221X
 
 {% highlight r %}
 Bd <- 0.331 # ball diameter, in inches
@@ -58,11 +62,20 @@ Which gives the values:
 </pre>
 
 
+* Amplitudes of the 4 key frequencies
+* RMS
+
+
+
 ## Statistical features
+
+* Quantiles, mean, sd, skew, kurtosis.
 
 
 ## Visually derived features
 
+* 5 strongest frequencies (not amplitudes)
+* Power in frequency bands
 
 ## Results
 
@@ -71,6 +84,7 @@ Some graphs/outcomes
 ## Conclusions
 
 Summary and next steps.
+
 
 
 
