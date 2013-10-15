@@ -271,7 +271,7 @@ Overall, these features suggest to me that bearing 1 should be considered to be 
 
 Calculating useful features is an essential part of identifying patterns within data, and there are three broad categories of features to consider. Domain expertise is always a good starting point, since engineers automatically look for meaningful patterns and trends. Statistical measures can help to characterise a dataset when that domain knowledge is hard to access. And finally, visualising the data will give the data scientist a gut feel for what looks interesting, although translating that intuition into a calculation can be challenging.
 
-The next step in the process would be to model deterioration in bearings using these features. Plotting and viewing suggests that some features are more important than others for indicating defects, so a process of feature selection would help to identify a core set with high relevance. However, the generation of a wide set of features is an essential step towards building a diagnostic model, and gives the data scientist a better understanding of what's in the data.
+The next step in the process would be to model deterioration in bearings using these features. Plotting and viewing suggests that some features are more important than others for indicating defects, so a process of feature selection would help to identify a core set with high relevance. However, the generation of a wide set of features is an essential step towards building a diagnostic model, and gives the data scientist a better understanding of what the data can say.
 
 
 
