@@ -45,10 +45,17 @@ p code {
   padding: 0 0.2em;
 }
 
-p img {
+p img, figure img {
   max-width: 100%;
   margin: 0 auto;
   display: block;
+}
+
+figcaption {
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.5em;
+  margin-top: 18px;
 }
 
 

@@ -48,7 +48,10 @@ This generates a plot of bearing 1's x-axis vibration, which should look like th
 
 Bearings are very widely used in mechanical systems, so there is a lot of engineering experience with interpreting bearing vibration patterns. Particular types of bearing failure will affect the vibration profile in different ways. There are four key frequencies that are recommended for monitoring, called the ball pass outer race (BPFO), ball pass inner race (BPFI), ball spin frequency (BSF), and fundamental train frequency (FTF). 
 
-![Bearing components](http://upload.wikimedia.org/wikipedia/commons/3/30/BallBearing.gif)
+<figure>
+![Bearing components](/assets/BallBearing.gif)
+<figcaption><a href="http://commons.wikimedia.org/wiki/File:BallBearing.gif">Image by PlusMinus</a>, <a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA-3.0</a>, via Wikimedia Commons</figcaption>
+</figure>
 
 If there is a problem such as a crack on one of the balls within the bearing (more properly called a _rolling element_), it will reduce the smoothness of rotation by hitting or bouncing as it comes into contact with neighbouring components. This will generate increased vibration at the ball spin frequency (BSF), since once per rotation the crack will come back into contact with the neighbour. Alternatively, if the crack is in the _inner race_ (the rotating inner casing, which the light red dot is travelling around), it will increase vibration at the BPFI, since this is the frequency at which rolling elements come into contact with that point on the inner race. Similarly, the BPFO relates to balls passing the _outer race_, the fixed casing which surrounds and contains the rolling elements. [More explanation of the four key frequencies is given by the Mobius Institute][mobius].
 
