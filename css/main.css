@@ -83,11 +83,27 @@ pre {
   color: #999;
 }
 
+.header {
+  text-align: center;
+}
+
 .header .title a {
   font-weight: bold;
   text-decoration: none;
   font-size: 24px;
   color: #a09;
+}
+
+.about {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  overflow: auto;
+}
+
+.about .photo img {
+  max-width: 100%;
+  border-radius: 0.5em;
+  margin-top: 1em;
 }
 
 .posts {
@@ -138,12 +154,34 @@ pre {
   text-align: right;
 }
 
+@media (min-width: 480px) {
+  .about .photo {
+    width: 60%;
+    float: right;
+    padding-left: 1em;
+  }
+}
+
+@media (min-width: 560px) {
+  .about .photo {
+    width: 50%;
+  }
+}
+
 @media (min-width: 768px) {
   .container {
     max-width: 32em;
     margin: 1em auto;
     font-size: 22px;
     line-height: 1.5em;
+  }
+
+  .about .photo {
+    width: 40%;
+  }
+
+  .about .bio {
+    width: 60%;
   }
 
   .posts .date {
