@@ -131,7 +131,7 @@ Finally, I want to display the Google map with traffic situations overlayed. The
 print(ggmap(map.img) + geom_point(aes(x=longitude, y=latitude, shape=event, color=colour), data=cbind(data, colour), size=3) + scale_colour_identity())
 {% endhighlight %}
 
-![Traffic incident map of Glasgow](/assets/traffic.png)
+[![Traffic incident map of Glasgow](/assets/traffic.png)](/assets/traffic.png)
 
 ## Code
 
