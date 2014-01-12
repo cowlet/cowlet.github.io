@@ -4,7 +4,7 @@ title:  "Understanding data science: classification with neural networks in R"
 description: ""
 ---
 
-A common tool in data science is the artificial neural network used as a classifier. This is a model which associates feature values with classes, allowing you to input new data and find out which class or grouping is most like it. The purpose can be to group anything, like customer types or music genres. For engineering purposes, the classifier is often used to diagnose the health of equipment, identifying it as normal, suspect, or suffering a specific type of failure.
+A common tool in data science is the artificial neural network used as a classifier. This is a model which associates features with classes, allowing you to input new data and find out the most similar class label. The purpose can be to label anything, like customer types or music genres. For engineering purposes, the classifier is often used to diagnose the health of equipment, identifying it as normal, suspect, or faulty.
 
 The network is a set of artificial neurons, connected like neurons in the brain. It learns associations by seeing lots of examples of each class, and learning the similarities and differences between them. This is thought to be a similar process to how the brain learns, with repeated exposure to a pattern forming a stronger and stronger association over time.
 
@@ -14,7 +14,7 @@ This article shows how to train a neural network in R to recognise the state of 
 
 ## The classification problem
 
-The task is to correctly diagnose the state of health of a bearing, given [14 features calculated from its vibration profile][feature-design]. Visual inspection and [k-means clustering][k-means] of lifetime data from four bearings suggested seven different states of health. These are colour-coded as follows, and shown for two features below:
+The task is to correctly diagnose the state of health of a bearing, given [14 features calculated from its vibration profile][feature-design]. Visual inspection and [k-means clustering][k-means] of data from four bearings suggested seven different states of health. These are colour-coded as follows, and shown for two features below:
 
  - green: "early" (initial run-in of the bearings)
  - blue: "normal"
@@ -38,7 +38,7 @@ data <- read.table(file=paste0(basedir, "../all_bearings_relabelled.csv"), sep="
 
 ## Artificial Neural Networks (ANNs)
 
-An ANN can learn patterns in data by mimicking the [structure and learning process of neurons in the brain][ann-intro]. They are widely used for all sorts of engineering problems, since it's been shown they can approximate any non-linear function, without the designer having to know beforehand what the function looks like. This is very handy, since it's rare that an engineering problem will turn out to be linear, quadratic, or some other simple shape.   
+An ANN can learn patterns in data by mimicking the [structure and learning process of neurons in the brain][ann-intro]. They are widely used for all sorts of engineering problems, since it's been shown they can approximate any non-linear function without the designer having to know beforehand what the function looks like. This is very handy, since it's rare that an engineering problem will turn out to be linear, quadratic, or some other simple shape.   
 
 [ann-intro]:        http://en.wikipedia.org/wiki/Artificial_neural_network
 
@@ -61,7 +61,7 @@ The inputs to the neuron are summed to give a single value, $$x$$. This is then 
 
 ![Artificial neuron structure](/assets/neuron.png)
 
-There are a number of functions which can be used in neurons, including the Radial Basis Function or a simple linear functions, but the most common is the sigmoid or logistic function, calculated by:
+There are a number of functions which can be used in neurons, including the Radial Basis Function or a simple linear function, but the most common is the sigmoid or logistic function, calculated by:
 
 $$f(x) = \frac{1}{1+e^{-x}}$$
 
@@ -125,7 +125,7 @@ The next parameter is the number of hidden neurons to use, _h_. There are some r
 
 One final point to remember is that the starting weights are randomly assigned when training begins. Sometimes you can get particularly good or bad starting points, where the weights begin near global or local minima. I always train with the same set of parameters three times, to be more certain of getting an average-to-good starting point.
 
-These parameter options apply to just about any ANN problem. But there are two aspects of the bearings data that complicate the task of training an ANN, and so the parameters have to be chosen more carefully.
+These parameter options apply to just about any ANN problem. But there are two aspects of the bearings data that complicate the task of training an ANN, and so the parameters have to be chosen more carefully. These are considered below.
 
 ### Feature Vector scale
 
@@ -148,7 +148,7 @@ normed <- cbind(data[,1:2], as.data.frame(lapply(data[,-c(1,2)], function(col) {
 ann <- nnet(State ~ ., data=normed[,-1], size=h, decay=5e-4, maxit=200)
 {% endhighlight %}
 
-I did a comparison of these two approaches, along with using neither:
+The only way to be sure of which approach works best is to train some networks and inspect the results. I tested networks with _h_ between 2 and 30, and did three test runs each for using normalised data, changing the _rang_ parameter, and doing neither. The accuracy looks like this:
 
 ![Comparison of using range, normalised data, and neither](/assets/range-vs-norm.png)
 
@@ -159,7 +159,7 @@ You can see that normalising the data gives significantly better results than se
 
 In an ideal classification problem, there would be equal numbers of training samples from each of the classes we're trying to learn. In almost all engineer problems, you have far more normal and healthy data than you have examples of faults and failure. The bearings dataset is a classic example of this.
 
-For the labels I've assigned, the numbers of each class are:
+For the labels I've assigned, the counts in each class are:
 
 <div class="r_output">
 <table>
@@ -190,13 +190,13 @@ For the labels I've assigned, the numbers of each class are:
 
 If all seven classes were equally likely to occur, we'd expect a classifier making a random selection to be accurate 1 in 7 times, or 14.3%. But using this dataset, if a bad classifier were to always label everything as normal, it would be accurate 4344/8624 = 50.4% of the time! It's like a weather prediction which always says there will be no snow tomorrow: it may be right 99% of the time, but it's completely useless in practice.
            
-With such uneven counts of each class, training will tend to pull the classifier towards always diagnosing the dominant class. There are two things we can do to counter this: even out the numbers in each class, or change the training to weight errors differently depending on the class label.
+With such uneven counts in each class, training will tend to pull the classifier towards always diagnosing the dominant class. There are two things we can do to counter this: even out the numbers in each class, or change the training to weight errors differently depending on the class label.
 
-The first is sometimes the easiest path to take, since you can cut your dataset down to $$n$$ samples from class, where $$n$$ is the number of samples in the minority class. In this case $$n$$ is 37, which would give a full dataset of $$7 \times 37 = 259$$ datapoints. This is very small compared to the full dataset, and I'd be concerned that a random selection of 37 points wouldn't give the full range of behaviours contained in some of these classes.
+The first is sometimes the easiest path to take, since you can cut your dataset down to $$n$$ samples from each class, where $$n$$ is the number of samples in the minority class. However, in this case $$n$$ is 37, which is very small compared to the full dataset. I'd be concerned that a random selection of 37 points wouldn't give the full range of behaviours contained in some of these classes.
 
 The alternative is to weight errors in the ANN by different amounts. During training, when the ANN makes an incorrect classification, the size of the error affects how much the network weights are updated. I can scale this based on the class of the error, so that a missed diagnosis of failure.inner causes the weights to be updated by more than a missed diagnosis of normal.
 
-This has further implications for setting up a training set, and calculating accuracy. Taking a random sample of 70% of the full dataset may result in a training set with no examples of the minority classes. I want to make sure I have 70% of the data from each class, so [I wrote some R code to generate a balanced training set][github-train]. I also need to write a weighted accuracy function, which calculates a percentage accuracy per class (instead of an overall accuracy dominated by "normal" classifications). The weighted accuracy function looks like this:
+This approach has further implications for setting up a training set, and calculating accuracy. Taking a random sample of 70% of the full dataset may result in a training set with no examples of the minority classes. I want to make sure I have 70% of the data from each class, so [I wrote some R code to generate a balanced training set][github-train]. I also need to write a weighted accuracy function, which calculates a percentage accuracy per class (instead of an overall accuracy dominated by "normal" classifications). The weighted accuracy function looks like this:
 
 [github-train]:     https://github.com/cowlet/data-science/blob/master/bearing_snippets/training_set.R
 
@@ -252,20 +252,20 @@ for (i in 1:3)
 
 ![Effect of class weights on accuracy](/assets/class-weights.png)
 
-You can see that at low numbers of neurons (h<10), equal weighting performs very much worse than the other two. There's not much to choose between the simplified powers of 10 and the programmatically derived 1/counts, so I'll choose this last one to limit human involvement and bias in the results.
+You can see that at low numbers of neurons (h<10), equal weighting performs very much worse than the other two. There's not much to choose between the simplified powers of 10 and the programmatically derived 1/counts, so either will work well as a solution.
 
 
 ## Results
 
 The [full code to test all the options above can be downloaded here][github-ann]. After running, I found the best network was generated by:
 
-  - Normalising the data
-  - Taking account of the uneven class counts, by:
+- Normalising the data
+- Taking account of the uneven class counts, by:
     - Selecting a balanced training set
     - Calculating weighted accuracy
     - Applying class weightings to errors
-  - Using class weightings of 1/counts
-  - Using 11 hidden neurons.
+- Using class weightings of 1/counts
+- Using 11 hidden neurons.
 
 [github-ann]:       https://github.com/cowlet/data-science/blob/master/bearing_snippets/ann_mlp.R
 
@@ -362,15 +362,16 @@ This network gives a weighted accuracy of 94.0%, and the confusion matrix below:
 </div>
 
 
-This shows a dominant diagnonal, which is what I'd expect with such a high accuracy. Of the early data, 280 samples are correct, while 10 are misclassified as normal. There is 100% accuracy at classifying failure.inner and stage2 samples, and only 1 failure.b2 sample is misclassified. The normal samples are overwhelmingly correctly classified, with the errors distributed over early, suspect, and one case of failure.roller. Overall, these results are quite consistent, with failures being identified as suspect or failures, and good behaviour being classed as early or normal.
+This shows a dominant diagonal of labels assigned correctly to samples. Generally speaking, there are small levels of confusion between early and normal data, with 10 early points being classed as normal, and 71 normal points classed as early. There is also some confusion between suspect and failure.roller samples. 
 
+It is encouraging that there is very little confusion between the classes relating to good health and those of bad health. One single normal point is misclassified as a fault class, and none of the early points. In addition, the failure classes are only ever misclassified as other types and stages of failure, never as normal behaviour. There is most confusion about the suspect class, but this is understandable if we consider suspect to be a transition between good and bad health.
 
 ## Conclusion
 
-I've quite comprehensively picked and tested various parameters for training a neural network to recognise the state of health of the bearings. The accuracy is good, at 94.0%, but not perfect. 
+I've quite comprehensively experimented with various parameters for training a neural network to recognise the state of health of the bearings. The accuracy is good at 94.0%, but not perfect. 
 
 One approach to increasing this accuracy is to train other types of classifier, to see if anything performs significantly better than the ANN. There are lots and lots of different techniques so this is always worth investigating.
 
-A more engineering approach is to classify a number of sequential datapoints, and take a majority view of the likely state. For example, if three sequential feature vectors are classified as normal, it's highly likely the bearing is in a normal state. If two are classified as failure.inner and one as suspect, we can be more sure of the fault diagnosis than if we just look at one classification in isolation. Particular for an engineering system which changes state somewhat gradually over time, this can be an effective and simple method of increasing certainty in the result.
+A more engineering approach is to classify a number of sequential datapoints, and take a majority view of the likely state. For example, if three sequential feature vectors are classified as normal, it's highly likely the bearing is in a normal state. If two are classified as failure.inner and one as suspect, we can be more sure of the fault diagnosis than if we just look at one classification in isolation. Particularly for an engineering system which changes fairly gradually over time, this can be a simple but effective method of increasing certainty in the result.
 
 
