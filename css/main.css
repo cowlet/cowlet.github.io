@@ -154,6 +154,36 @@ pre {
   text-align: right;
 }
 
+table {
+  font-size: 0.8em;
+  margin: 0 auto;
+}
+
+tr:nth-child(2n) {
+  background: #f0f0f0;
+}
+
+tr:nth-child(2n+1) {
+  background: #fff;
+}
+
+td, th {
+  padding: 0 5px;
+}
+
+tbody th {
+  text-align: left;
+}
+
+.r_output {
+  max-width: 100%;
+  overflow: scroll;
+}
+
+.r_output td, .r_output th {
+  text-align: right;
+}
+
 @media (min-width: 480px) {
   .about .photo {
     width: 60%;
