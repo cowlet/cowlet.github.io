@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Understanding data science: classification with neural networks in R"
-description: ""
+description: "Neural networks are commonly used for classification in data science. This article shows how to use nnet in R, using an open bearings dataset."
 ---
 
-A common tool in data science is the artificial neural network used as a classifier. This is a model which associates features with classes, allowing you to input new data and find out the most similar class label. The purpose can be to label anything, like customer types or music genres. For engineering purposes, the classifier is often used to diagnose the health of equipment, identifying it as normal, suspect, or faulty.
+Artificial neural networks are commonly used for classification in data science. They group feature vectors into classes, allowing you to input new data and find out which label fits best. This can be used to label anything, like customer types or music genres. In engineering, classifiers are often used to diagnose the health of equipment, identifying it as normal, suspect, or faulty.
 
 The network is a set of artificial neurons, connected like neurons in the brain. It learns associations by seeing lots of examples of each class, and learning the similarities and differences between them. This is thought to be a similar process to how the brain learns, with repeated exposure to a pattern forming a stronger and stronger association over time.
 
@@ -372,6 +372,6 @@ I've quite comprehensively experimented with various parameters for training a n
 
 One approach to increasing this accuracy is to train other types of classifier, to see if anything performs significantly better than the ANN. There are lots and lots of different techniques so this is always worth investigating.
 
-A more engineering approach is to classify a number of sequential datapoints, and take a majority view of the likely state. For example, if three sequential feature vectors are classified as normal, it's highly likely the bearing is in a normal state. If two are classified as failure.inner and one as suspect, we can be more sure of the fault diagnosis than if we just look at one classification in isolation. Particularly for an engineering system which changes fairly gradually over time, this can be a simple but effective method of increasing certainty in the result.
+A rougher engineering approach is to classify a number of sequential datapoints, and take a majority view of the likely state. For example, if three sequential feature vectors are classified as normal, it's highly likely the bearing is in a normal state. If two are classified as failure.inner and one as suspect, we can be more sure of the fault diagnosis than if we just look at one classification in isolation. Particularly for an engineering system which changes fairly gradually over time, this can be a simple but effective method of increasing certainty in the result.
 
 
