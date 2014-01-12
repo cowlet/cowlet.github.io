@@ -18,6 +18,7 @@ The last article focused on generating as many features as possible, so why do I
 So why is complexity bad? Consider the [structure of a standard neural network][ann-intro]: there is an input layer (where features are fed in), a hidden layer (with neurons to combine the inputs), and an output layer (with one neuron per output class). Training lets the network learn the best weights on every input to each neuron, by adjusting the weights slightly after seeing an example from the training set. 
 
 ![Example artificial neural network structure](/assets/ann.png)
+
 [ann-intro]:        http://en.wikipedia.org/wiki/Artificial_neural_network
 
 If there are more features in the feature vector, there will automatically be more inputs, which means more weights on the hidden layer to learn. Adjusting more weights takes longer, so a more complex model requires a longer time to train. On the other hand, a smaller feature vector means fewer weights in a smaller model, and a faster training time. This is a significant practical benefit, as it could reduce training times from hours to minutes, or minutes to seconds. 

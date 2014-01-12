@@ -9,7 +9,7 @@ One of the best tools for data science is clustering, where groupings of datapoi
 [feature-reduction]:    {% post_url 2013-11-27-understanding-data-science-dimensionality-reduction-with-r %}
 
 <figure>
-![K-means example](/assets/kmeans-example.png)
+<img src="/assets/kmeans-example.png" alt="K-means example">
 <figcaption>K-means clustering on sample data, with input data in red, blue, and green, and the centre of each learned cluster plotted in black</figcaption>
 </figure>
 

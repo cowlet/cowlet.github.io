@@ -49,7 +49,7 @@ This generates a plot of bearing 1's x-axis vibration, which should look like th
 Bearings are very widely used in mechanical systems, so there is a lot of engineering experience with interpreting bearing vibration patterns. Particular types of bearing failure will affect the vibration profile in different ways. There are four key frequencies that are recommended for monitoring, called the ball pass outer race (BPFO), ball pass inner race (BPFI), ball spin frequency (BSF), and fundamental train frequency (FTF). 
 
 <figure>
-![Bearing components](/assets/BallBearing.gif)
+<img src="/assets/BallBearing.gif" alt="Bearing components">
 <figcaption><a href="http://commons.wikimedia.org/wiki/File:BallBearing.gif">Image by PlusMinus</a>, <a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA-3.0</a>, via Wikimedia Commons</figcaption>
 </figure>
 
