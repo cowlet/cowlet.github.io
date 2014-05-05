@@ -64,7 +64,7 @@ The [board originally used the ATmega32 microcontroller][board], which is an 8-b
 Later versions switched to using an FPGA instead of a microcontroller, and external chips were used for ethernet encoding, to cope with the data rate. The [University version of the board][websdr] also uses an FPGA instead of a microcontroller, and chips for Gigabit ethernet instead of 10Mbit/s. 
 
 
-## Final points
+## Delayed decode
 
 The calculations here show that it's possible to use a single tuner and ADC to sample all possible channels in the shortwave band without data loss. It relies on an ADC which can operate at 56.8MHz or above, and a tuner circuit which can switch frequency fast enough to match the ADC speed. It also requires enough data throughput to get the channel data off the board and onto a computer for further processing.
 
