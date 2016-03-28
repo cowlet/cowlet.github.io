@@ -92,7 +92,26 @@ minimising false positives.
 
 [cad]:          /portfolio/cad.html
 
-## [Authored a book chapter on data analytics][sghandbook]
+## [A popular introduction to data science][cowlet]
+
+<div style="float: right">
+<figure>
+<img src="/portfolio/assets/quantile.pdf" alt="Bearing features" width="300px">
+</figure>
+</div>
+
+<div style="float: auto">
+A growing number of people are interested in data science, but academic
+papers and formal training can be difficult ways to break in. My personal
+site shows <a href="http://cowlet.org">how to get started with data science
+in R</a>, through a series of articles covering feature extraction and
+selection, clustering, and classification using multiple techniques, all
+applied to fault detection in bearings.
+</div>
+
+[cowlet]:       /index.html
+
+## [A book chapter on data analytics][sghandbook]
 
 <div style="float: right">
 <figure>
@@ -106,8 +125,8 @@ href="http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1118755480.html">Smart
 Grid Handbook</a> by writing a chapter on "Data Analytics for Transmission
 and Distribution". I drew on my experience of developing and deploying data
 analytics in this field to highlight the increasing role that online
-analytics can play, and some key factors that led to the success of each
-case study.  </div>
+analytics can play, and some lessons learned from each case study.
+</div>
 
 [sghandbook]:   http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1118755480.html
 
