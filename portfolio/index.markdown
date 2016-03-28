@@ -31,3 +31,13 @@ the deep network compared to typical engineered features.
 
 [dnns]:         /portfolio/dnns.html
 
+## [Identifying harmonics from condition data][harmonics]
+
+The data used to diagnose insulation defects can be distorted by harmonics
+on the power network. This research proposed an alternative to expensive
+harmonic monitoring, by diagnosing the presence of harmonics from the same
+condition data. This gives a clearer picture of equipment health, by
+separating harmonic effects from defect effects.
+
+[harmonics]:    /portfolio/harmonics.html
+
