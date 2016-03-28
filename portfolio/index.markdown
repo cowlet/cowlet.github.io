@@ -41,3 +41,14 @@ separating harmonic effects from defect effects.
 
 [harmonics]:    /portfolio/harmonics.html
 
+## [Detecting anomalous transformer behaviour][cad]
+
+Older transformers develop a signature pattern of behaviour that is specific
+to each one. Anomaly detection is more useful than diagnostics as
+transformers age, since it's more important to spot changes in behaviour
+than to repeatedly classify minor problems. This work applied Conditional
+Anomaly Detection to keep two transformers in service for 18 months, while
+minimising false positives.
+
+[cad]:          /portfolio/cad.html
+
