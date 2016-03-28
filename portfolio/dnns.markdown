@@ -21,7 +21,7 @@ diagnose the defect][evcomb]. The typical size of a feature vector is very
 large (50 to 100 features), and the relationship of each feature to the
 diagnosis is not very clearly understood.
 
-[evcomb]:   /portfolio/evidencecomb.html
+[evcomb]:   http://strathprints.strath.ac.uk/11785/
 
 In this research, I used a deep belief network approach to increase the
 accuracy of the diagnosis. As a secondary effect, I could inspect the
@@ -61,7 +61,7 @@ learning.
 
 ## Resources
 
-A paper detailing this work:
+The paper detailing this work:
 
 - [Deep neural networks for understanding and diagnosing partial discharge data][conf]
 

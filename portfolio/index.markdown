@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Victoria Catterson
-description: ""
+description: "Highlights of my data science projects"
 ---
 
 # Portfolio
@@ -51,4 +51,15 @@ Anomaly Detection to keep two transformers in service for 18 months, while
 minimising false positives.
 
 [cad]:          /portfolio/cad.html
+
+## [Authored a book chapter on data analytics][sghandbook]
+
+I was asked to contribute to the forthcoming [Smart Grid
+Handbook][sghandbook] by writing a chapter on "Data Analytics for
+Transmission and Distribution". I drew on my experience of developing and
+deploying data analytics in this field to highlight the increasing role that
+online analytics can play, and some key factors that led to the success of
+each case study.
+
+[sghandbook]:   http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1118755480.html
 
