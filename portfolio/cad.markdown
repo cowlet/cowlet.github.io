@@ -27,7 +27,7 @@ environmental parameters, and one of the condition indicator parameters --
 then learns the correlations between the two. Anomalies are only flagged
 when abnormal condition indicators occur in a normal environment.
 
-![Block diagram of the CAD model](/portfolio/assets/CAD_arch.pdf)
+![Block diagram of the CAD model](/portfolio/assets/CAD_arch.png)
 
 ## Results
 
@@ -40,7 +40,7 @@ to sensor and logging issues, where plausible but incorrect values were
 recorded for transformer condition parameters.
 
 <figure>
-<img src="/portfolio/assets/CAD_output.pdf" alt="Model output showing four
+<img src="/portfolio/assets/CAD_output.png" alt="Model output showing four
 anomalies">
 <figcaption>Model output showing four anomalies, where a low probability can
 be seen in the final output of the CAD model (fCAD) and the condition

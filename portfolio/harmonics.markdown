@@ -31,7 +31,7 @@ induction classifiers to identify the presence of the 5th and 7th harmonics,
 with moderate accuracy on unseen data (around 60%).
 
 <figure>
-<img src="/portfolio/assets/harmonics.pdf" alt="Accuracy of classifiers on different test waveforms">
+<img src="/portfolio/assets/harmonics.png" alt="Accuracy of classifiers on different test waveforms">
 <figcaption>Accuracy of classifiers on different test waveforms</figcaption>
 </figure>
 
@@ -46,7 +46,7 @@ majority voting on sequential patterns. This worked, with accuracy tending
 towards an asymptote as batch size increases.
 
 <figure>
-<img src="/portfolio/assets/harmonicbatch.pdf" alt="Accuracy of the 5th
+<img src="/portfolio/assets/harmonicbatch.png" alt="Accuracy of the 5th
 harmonic majority voting classifier as batch size increases">
 <figcaption>Accuracy of the 5th harmonic majority voting classifier on the training data as batch size increases</figcaption>
 </figure>

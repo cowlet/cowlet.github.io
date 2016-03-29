@@ -30,14 +30,14 @@ against the typical features derived from expert judgement.
 
 <div style="float: left">
 <figure>
-<img src="/portfolio/assets/numneurons.pdf" alt="Recall accuracy of two layer networks with different numbers of neurons" width="300px">
+<img src="/portfolio/assets/numneurons.png" alt="Recall accuracy of two layer networks with different numbers of neurons" width="300px">
 <figcaption>Accuracy of two layer networks with different numbers of neurons</figcaption>
 </figure>
 </div>
 
 <div style="float: auto">
 <figure>
-<img src="/portfolio/assets/numlayers.pdf" alt="Recall accuracy of deep networks with different numbers of layers" width="300px">
+<img src="/portfolio/assets/numlayers.png" alt="Recall accuracy of deep networks with different numbers of layers" width="300px">
 <figcaption>Accuracy of deep networks with different numbers of layers</figcaption>
 </figure>
 </div>
@@ -55,7 +55,7 @@ different from the typical features calculated for diagnosis by shallow
 learning.
 
 <figure>
-<img src="/portfolio/assets/neuronpics.pdf" alt="Examples of neuron activation, visualized by input weightings. Each image represents one neuron">
+<img src="/portfolio/assets/neuronpics.png" alt="Examples of neuron activation, visualized by input weightings. Each image represents one neuron">
 <figcaption>Examples of neuron activation, visualized by input weightings. Each image represents one neuron</figcaption>
 </figure>
 

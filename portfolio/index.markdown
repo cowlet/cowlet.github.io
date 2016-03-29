@@ -42,7 +42,7 @@ predicting normal behaviour.
 
 <div style="float: right">
 <figure>
-<img src="/portfolio/assets/numlayers.pdf" alt="DNN accuracy" width="300px">
+<img src="/portfolio/assets/numlayers.png" alt="DNN accuracy" width="300px">
 </figure>
 </div>
 
@@ -59,7 +59,7 @@ the deep network compared to typical engineered features.
 
 <div style="float: right">
 <figure>
-<img src="/portfolio/assets/harmonicbatch.pdf" alt="Harmonics accuracy" width="300px">
+<img src="/portfolio/assets/harmonicbatch.png" alt="Harmonics accuracy" width="300px">
 </figure>
 </div>
 
@@ -77,7 +77,7 @@ separating harmonic effects from defect effects.
 
 <div style="float: right">
 <figure>
-<img src="/portfolio/assets/CAD_arch.pdf" alt="CAD block diagram" width="300px">
+<img src="/portfolio/assets/CAD_arch.png" alt="CAD block diagram" width="300px">
 </figure>
 </div>
 
@@ -96,7 +96,7 @@ minimising false positives.
 
 <div style="float: right">
 <figure>
-<img src="/portfolio/assets/quantile.pdf" alt="Bearing features" width="300px">
+<img src="/portfolio/assets/quantile.png" alt="Bearing features" width="300px">
 </figure>
 </div>
 
