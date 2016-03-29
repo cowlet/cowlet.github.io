@@ -130,8 +130,8 @@ A growing number of people are interested in data science, but academic
 papers and formal training can be difficult ways to break in. My personal
 site shows <a href="http://cowlet.org">how to get started with data science
 in R</a>, through a series of articles covering feature extraction and
-selection, clustering, and classification using multiple techniques, all
-applied to fault detection in bearings.
+selection, clustering, and classification using multiple techniques. These
+are demonstrated on an open dataset of faults within bearings.
 </div>
 
 [cowlet]:       /index.html
