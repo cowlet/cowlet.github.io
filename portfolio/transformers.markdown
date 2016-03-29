@@ -5,6 +5,10 @@ title: Transformer Lifetime Estimation
 
 # Predicting Remaining Useful Life of Transformers
 
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: predictive analytics, particle filtering, Bayesian, uncertainty
+</div>
+
 Transformers are the most expensive components of power networks. Over time,
 the heat within a transformer causes its paper insulation to become brittle.
 Eventually, the paper loses its mechanical strength entirely, and the

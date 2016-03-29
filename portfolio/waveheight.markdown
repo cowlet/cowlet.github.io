@@ -5,6 +5,10 @@ title: Wave height forecasting
 
 # Wave height forecasting for offshore access
 
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: forecasting, neural nets, SVMs, ensembles, metrics
+</div>
+
 Engineers need to periodically access offshore wind turbines to perform maintenance. The day hire of a crew transfer ship is approximately $2500, but the vessel can only sail when waves are below 1.5m in height. Wind farm operators use wave height forecasting to judge whether waves will stay below the limit for the duration of the round trip. An inaccurate forecast will have a financial penalty, either through a wasted vessel hire or a missed opportunity to return the turbine to peak efficiency. 
 
 ## The Data Science

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    {% if page.description %}<meta name="description" content="{{page.description}}">{% else %}<meta name="description" content="{{site.description}}">{% endif %}
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" href="/css/screen.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed.atom" type="application/atom+xml" rel="alternate" title="All posts">
+  </head>
+  <body>
+    <div class="container" style="max-width: 40em">
+      <div class="header">
+        <span class="title"><a href="/">Victoria Catterson</a></span>
+      </div>
+
+      {{ content }}
+
+      <div class="footer">
+        <div class="contact">
+          <p>
+          Victoria Catterson<br />
+          vic@cowlet.org
+          </p>
+        </div>
+        <div class="links">
+          <p>
+          <a href="/feed.atom">cowlet.org/feed.atom</a><br />
+          <a href="https://github.com/cowlet">github.com/cowlet</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

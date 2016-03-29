@@ -5,6 +5,10 @@ title: Conditional Anomaly Detection
 
 # Detecting Anomalous Transformer Behaviour
 
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: correlation, anomaly detection, reducing false positives
+</div>
+
 A transformer can operate in the power network for 60 years or more, and
 over that time develop a signature pattern of behaviour. Standard diagnostic
 tools will flag these quirks as requiring repair, but as long as the

@@ -5,6 +5,10 @@ title: Deep neural networks for insulation diagnosis
 
 # Diagnosing faults in insulation using deep neural networks
 
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: deep learning, neural nets, feature analysis
+</div>
+
 Insulation is used in all electrical equipment to prevent short-circuit and
 other network faults. Insulation defects can lead to small electrical
 discharges which partially cross the insulation (called partial discharge,

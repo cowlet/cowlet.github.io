@@ -5,6 +5,10 @@ title: Identifying harmonics from unconventional data
 
 # Identifying network harmonics from condition data
 
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: rule induction, decision trees, majority voting, data reuse
+</div>
+
 A common health monitoring technique for high voltage equipment is to
 measure small electrical currents called [partial discharge (PD) in the
 insulation][dnns]. The pattern of PD can be used to diagnose the type of

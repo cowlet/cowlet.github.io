@@ -1,12 +1,16 @@
 ---
-layout: default
+layout: portfolio
 title: Victoria Catterson
 description: "Highlights of my data science projects"
 ---
 
 # Portfolio
 
-## [Wave height forecasting for offshore access][waveheight]
+## [Wave height forecasting for offshore turbine access][waveheight]
+
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: forecasting, neural nets, SVMs, ensembles, metrics
+</div>
 
 <div style="float: right">
 <figure>
@@ -20,7 +24,11 @@ Engineers need to periodically access offshore wind turbines to perform maintena
 
 [waveheight]:   /portfolio/waveheight.html
 
-## [Predicting remaining life of transformers][transformers]
+## [Predicting remaining useful life of transformers][transformers]
+
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: predictive analytics, particle filtering, Bayesian, uncertainty
+</div>
 
 <div style="float: right">
 <figure>
@@ -38,7 +46,11 @@ predicting normal behaviour.
 
 [transformers]: /portfolio/transformers.html
 
-## [Defect diagnosis using deep neural nets][dnns]
+## [Defect diagnosis using deep neural networks][dnns]
+
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: deep learning, neural nets, feature analysis
+</div>
 
 <div style="float: right">
 <figure>
@@ -49,13 +61,18 @@ predicting normal behaviour.
 <div style="float: auto">
 Insulation is used in all electrical equipment to prevent short-circuit
 faults. This work improved the accuracy of diagnosis of insulation defects
-by using a deep approach, and led to insights about the features learned by
-the deep network compared to typical engineered features.
+by using a deep approach. It also led to insights about important parts of
+the data, through a comparison of features learned by the deep network and
+typical engineered features.
 </div>
 
 [dnns]:         /portfolio/dnns.html
 
 ## [Identifying harmonics from condition data][harmonics]
+
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: rule induction, decision trees, majority voting, data reuse
+</div>
 
 <div style="float: right">
 <figure>
@@ -74,6 +91,10 @@ separating harmonic effects from defect effects.
 [harmonics]:    /portfolio/harmonics.html
 
 ## [Detecting anomalous transformer behaviour][cad]
+
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: correlation, anomaly detection, reducing false positives
+</div>
 
 <div style="float: right">
 <figure>
@@ -94,6 +115,10 @@ minimising false positives.
 
 ## [A popular introduction to data science][cowlet]
 
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: features, k-means, neural nets, decision trees, SVMs, kNN
+</div>
+
 <div style="float: right">
 <figure>
 <img src="/portfolio/assets/quantile.png" alt="Bearing features" width="300px">
@@ -112,6 +137,10 @@ applied to fault detection in bearings.
 [cowlet]:       /index.html
 
 ## [A book chapter on data analytics][sghandbook]
+
+<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+keywords: regression, classification, prognostics, diagnostics
+</div>
 
 <div style="float: right">
 <figure>
