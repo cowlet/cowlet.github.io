@@ -5,7 +5,7 @@ title: Deep neural networks for insulation diagnosis
 
 # Diagnosing faults in insulation using deep neural networks
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: deep learning, neural nets, feature analysis
 </div>
 

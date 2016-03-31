@@ -5,7 +5,7 @@ title: Identifying harmonics from unconventional data
 
 # Identifying network harmonics from condition data
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: rule induction, decision trees, majority voting, data reuse
 </div>
 

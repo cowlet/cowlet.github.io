@@ -5,7 +5,7 @@ title: Wave height forecasting
 
 # Wave height forecasting for offshore access
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: forecasting, neural nets, SVMs, ensembles, metrics
 </div>
 

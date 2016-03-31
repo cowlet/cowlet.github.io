@@ -8,11 +8,11 @@ description: "Highlights of my data science projects"
 
 ## [Wave height forecasting for offshore turbine access][waveheight]
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: forecasting, neural nets, SVMs, ensembles, metrics
 </div>
 
-<div style="float: right">
+<div style="float: right; margin-left: 20px">
 <figure>
 <img src="/portfolio/assets/RMSE.png" alt="Wave height accuracy" width="300px">
 </figure>
@@ -26,11 +26,11 @@ Engineers need to periodically access offshore wind turbines to perform maintena
 
 ## [Predicting remaining useful life of transformers][transformers]
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: predictive analytics, particle filtering, Bayesian, uncertainty
 </div>
 
-<div style="float: right">
+<div style="float: right; margin-left: 20px">
 <figure>
 <img src="/portfolio/assets/txoverload.png" alt="Transformer life prediction" width="300px">
 </figure>
@@ -48,11 +48,11 @@ predicting normal behaviour.
 
 ## [Defect diagnosis using deep neural networks][dnns]
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: deep learning, neural nets, feature analysis
 </div>
 
-<div style="float: right">
+<div style="float: right; margin-left: 20px">
 <figure>
 <img src="/portfolio/assets/numlayers.png" alt="DNN accuracy" width="300px">
 </figure>
@@ -70,11 +70,11 @@ typical engineered features.
 
 ## [Identifying harmonics from condition data][harmonics]
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: rule induction, decision trees, majority voting, data reuse
 </div>
 
-<div style="float: right">
+<div style="float: right; margin-left: 20px">
 <figure>
 <img src="/portfolio/assets/harmonicbatch.png" alt="Harmonics accuracy" width="300px">
 </figure>
@@ -82,9 +82,9 @@ keywords: rule induction, decision trees, majority voting, data reuse
 
 <div style="float: auto">
 The data used to diagnose insulation defects can be distorted by harmonics
-on the power network. This research proposed an alternative to expensive
+on the power network. This work proposed an alternative to costly
 harmonic monitoring, by diagnosing the presence of harmonics from the same
-condition data. This gives a clearer picture of equipment health, by
+condition data. This gives a clearer picture of equipment health,
 separating harmonic effects from defect effects.
 </div>
 
@@ -92,11 +92,11 @@ separating harmonic effects from defect effects.
 
 ## [Detecting anomalous transformer behaviour][cad]
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: correlation, anomaly detection, reducing false positives
 </div>
 
-<div style="float: right">
+<div style="float: right; margin-left: 20px">
 <figure>
 <img src="/portfolio/assets/CAD_arch.png" alt="CAD block diagram" width="300px">
 </figure>
@@ -104,22 +104,22 @@ keywords: correlation, anomaly detection, reducing false positives
 
 <div style="float: auto">
 Older transformers develop a signature pattern of behaviour that is specific
-to each one. Anomaly detection is more useful than diagnostics as
-transformers age, since it's more important to spot changes in behaviour
-than to repeatedly classify minor problems. This work applied Conditional
-Anomaly Detection to keep two transformers in service for 18 months, while
-minimising false positives.
+to each one. Anomaly detection is more useful than diagnostics in this case,
+since it's more important to spot changes in behaviour than to repeatedly
+classify minor problems. This work applied Conditional Anomaly Detection to
+keep two transformers in service for 18 months, while minimising false
+positives.
 </div>
 
 [cad]:          /portfolio/cad.html
 
 ## [A popular introduction to data science][cowlet]
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: features, k-means, neural nets, decision trees, SVMs, kNN
 </div>
 
-<div style="float: right">
+<div style="float: right; margin-left: 20px">
 <figure>
 <img src="/portfolio/assets/quantile.png" alt="Bearing features" width="300px">
 </figure>
@@ -138,11 +138,11 @@ are demonstrated on an open dataset of faults within bearings.
 
 ## [A book chapter on data analytics][sghandbook]
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: regression, classification, prognostics, diagnostics
 </div>
 
-<div style="float: right">
+<div style="float: right; margin-left: 20px">
 <figure>
 <img src="/portfolio/assets/sgh_cover.jpg" alt="Book cover" width="150px">
 </figure>

@@ -5,7 +5,7 @@ title: Transformer Lifetime Estimation
 
 # Predicting Remaining Useful Life of Transformers
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: predictive analytics, particle filtering, Bayesian, uncertainty
 </div>
 

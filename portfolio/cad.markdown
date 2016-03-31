@@ -5,7 +5,7 @@ title: Conditional Anomaly Detection
 
 # Detecting Anomalous Transformer Behaviour
 
-<div class="keywords" style="font-size: 16px; color: #a09; line-height: 1em; margin-bottom: 1em">
+<div class="keywords">
 keywords: correlation, anomaly detection, reducing false positives
 </div>
 
