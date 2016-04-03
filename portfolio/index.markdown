@@ -6,6 +6,9 @@ description: "Highlights of my data science projects"
 
 # Portfolio
 
+I'm a data scientist with experience of translating engineering problems
+into machine learning solutions. Here is a sample of the interesting projects I've worked on.
+
 ## [Wave height forecasting for offshore turbine access][waveheight]
 
 <div class="keywords">
