@@ -4,10 +4,18 @@
   box-sizing: border-box;
 }
 
+html, body {
+  font-family: Georgia, serif;
+}
+
 .container {
   margin: 1em;
   font-size: 18px;
   line-height: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -84,6 +92,7 @@ pre {
 }
 
 .header .title a {
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-decoration: none;
   font-size: 24px;
@@ -102,6 +111,10 @@ pre {
   margin-top: 1em;
 }
 
+.portfolio-item {
+  margin-bottom: 4em;
+}
+
 .posts {
   padding: 0;
   list-style: none;
@@ -111,6 +124,10 @@ pre {
   overflow: auto;
   clear: both;
   margin-bottom: 9px;
+}
+
+.posts li a {
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .posts .date {
@@ -237,7 +254,7 @@ input[type=submit]:hover {
 
 @media (min-width: 768px) {
   .container {
-    max-width: 32em;
+    max-width: 40em;
     margin: 1em auto;
     font-size: 22px;
     line-height: 1.5em;
