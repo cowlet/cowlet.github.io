@@ -99,9 +99,35 @@ pre {
   color: #849;
 }
 
+#particles-js {
+  position: relative;
+  height: 400px;
+}
+
+#particles-js .header {
+  position: absolute;
+  top: 1em;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#particles-js canvas {
+  z-index: 1;
+  position: relative;
+}
+
+#particles-js a, img {
+  z-index: 2;
+  position: relative;
+}
+
 .about {
-  margin-top: 1em;
-  margin-bottom: 2em;
+  position: absolute;
+  top: 1em;
+  left: 0;
+  right: 0;
+  margin: auto;
   overflow: auto;
 }
 

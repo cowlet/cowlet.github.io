@@ -4,14 +4,20 @@ title: Victoria Catterson
 description: "Highlights of my data science projects"
 ---
 
-<div class="about">
+<div id="particles-js">
+<div class="header">
+  <span class="title"><a href="/">Victoria Catterson</a></span>
+</div>
+<div class="container about">
 <div class="photo"><img src="/assets/victoria.jpg" alt="Photo of Victoria Catterson" /></div>
 <div class="bio">
 <p>I'm a data scientist with experience of translating engineering problems into machine learning solutions. Here is a sample of the interesting projects I've worked on.</p>
 <p>There's some <a href="https://github.com/cowlet">related code on my GitHub page</a>. If you have any questions, send me an email at <a href="mailto:vic@cowlet.org">vic@cowlet.org</a>.</p>
 </div>
 </div>
+</div>
 
+<div class="container">
 <div class="portfolio-item">
 <h2><a href="/portfolio/waveheight.html">Wave height forecasting for offshore turbine access</a></h2>
 
@@ -163,4 +169,5 @@ and Distribution". I drew on my experience of developing and deploying data
 analytics in this field to highlight the increasing role that online
 analytics can play, and some lessons learned from each case study.
 </p>
+</div>
 </div>
