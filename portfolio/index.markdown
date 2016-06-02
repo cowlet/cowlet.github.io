@@ -6,7 +6,7 @@ description: "Highlights of my data science projects"
 
 <div id="particles-js">
 <div class="header">
-  <span class="title"><a href="/">Victoria Catterson</a></span>
+  <a class="title" href="/">Victoria Catterson</a>
 </div>
 <div class="container about">
 <div class="photo"><img src="/assets/victoria.jpg" alt="Photo of Victoria Catterson" /></div>
