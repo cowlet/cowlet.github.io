@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: portfolio-item
 title: Conditional Anomaly Detection 
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: portfolio-item
 title: Identifying harmonics from unconventional data
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: portfolio-item
 title: Deep neural networks for insulation diagnosis
 ---
 

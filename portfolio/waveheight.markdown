@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: portfolio-item
 title: Wave height forecasting
 ---
 
