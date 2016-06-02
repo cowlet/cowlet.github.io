@@ -103,33 +103,13 @@ pre {
 #particles-js {
   margin: 1em 0;
   position: relative;
-  height: 440px;
-}
-
-#particles-js .header {
-  position: absolute;
-  top: 6px;
-  left: 0;
-  right: 0;
-  margin: auto;
 }
 
 #particles-js canvas {
-  z-index: 1;
-  position: relative;
-}
-
-#particles-js a, img {
-  z-index: 2;
-  position: relative;
+  display: none;
 }
 
 .about {
-  position: absolute;
-  top: 2em;
-  left: 0;
-  right: 0;
-  margin: auto;
   overflow: auto;
 }
 
@@ -286,6 +266,30 @@ input[type=submit]:hover {
     margin: 1em auto;
     font-size: 22px;
     line-height: 1.5em;
+  }
+
+  #particles-js {
+    height: 420px;
+    margin-bottom: 3em;
+  }
+
+  #particles-js canvas {
+    display: block;
+    z-index: 1;
+    position: relative;
+  }
+
+  #particles-js img, a {
+    z-index: 2;
+    position: relative;
+  }
+
+  #particles-js .about {
+    position: absolute;
+    top: 2em;
+    left: 0;
+    right: 0;
+    margin: auto;
   }
 
   .about .photo {
