@@ -4,13 +4,13 @@ title:  "Linear regression in Rust"
 description:  "One of the most fundamental ML techniques, how does linear regression work?"
 ---
 
-Rust is an interesting new programming language, with a rich type system, zero-cost abstractions, and a memory-safety checker. The best way to pick up a new programming language is to build something real with it. At the same time, the best way to understand how a machine learning algorithm really works is to build it yourself.
+Rust is an interesting new programming language, with a rich type system, zero-cost abstractions, and a memory-safety checker. The best way to pick up a new programming language is to build something real with it. Also, the best way to understand how a machine learning algorithm really works is to build it yourself.
 
-I decided to learn Rust by implementing linear regression, which is an elegant and simple technique, but one which is still useful even at advanced levels. This article describes the algorithm and its applications, and examines what I learned while building it in Rust.
+I decided to learn both Rust and the inner workings of linear regression at the same time. Linear regression is a simple concept, but still very useful for data science. This article describes the algorithm and its applications, and what I learned while building it in Rust.
 
 ## What is linear regression?
 
-A common use of linear regression is fitting sampled data to a straight-line function of the form:
+A common use of linear regression is to fit sampled data to a straight-line function of the form:
 
 $$y = mx + c$$ 
 
@@ -34,12 +34,12 @@ As an example, let's assume that we've collected the following data:
 </tr>
 <tr>
 <td>$$y$$</td>
-<td>0</td>
-<td>2</td>
-<td>6</td>
-<td>12</td>
-<td>20</td>
-<td>30</td>
+<td>0.1</td>
+<td>1.9</td>
+<td>6.2</td>
+<td>11.9</td>
+<td>21.0</td>
+<td>30.1</td>
 </tr>
 </tbody>
 </table>
@@ -64,7 +64,7 @@ We can even use linear regression to fit polynomial models:
 $$\begin{eqnarray}y & = & m_2x^2 + m_1x + m_0 \\
 y & = & m_3x^3 + m_2x^2 + m_1x + m_0 \end{eqnarray}$$
 
-Hold up, how can *linear* regression fit a *non-linear* polynomial? Well, the dependent variable $$y$$ is linear with respect to each of the input variables (that is, the $$m_i$$ parameters scale each input linearly), and the model only cares about finding the $$m_i$$ parameters. The model doesn't know or care that the input variables have a non-linear relationship to each other.
+Hold up, how can *linear* regression fit a *non-linear* polynomial? Well, the technique considers the three input variables separately; that is, the dependent variable $$y$$ is linear with respect to each of $$x^2$$, $$x^1$$, and $$x^0$$. Each $$m_i$$ parameter scales its input linearly. The model only cares about finding the $$m_i$$ parameters, and doesn't know or care that the input variables have a non-linear relationship to each other.
 
 So what does a higher-order polynomial fit on our example data look like? If we perform the regression to a second order polynomial (a quadratic) we get the parameters $$m_0 = 0$$, $$m_1 = 1$$, $$m_2 = 1$$, which looks like this:
 
@@ -72,7 +72,7 @@ So what does a higher-order polynomial fit on our example data look like? If we 
 <img src="/assets/order2.png" alt="Quadratic linear regression">
 </figure>
 
-Perfect!
+Much better!
 
 ## Matrix representation
 
@@ -145,10 +145,14 @@ Ok! Now we know what we're aiming to do, it's time to start writing some Rust. T
 - Performing the linear regression
 - Visualising the result
 
-These are explained in detail with code snippets below. The one short-cut I'll take for the computation is to use the [`la` library for representing matrices and performing the SVD decomposition][la]. The complete program for [linear regression in Rust can be found here][lines].
+These are explained in detail with code snippets below. If you want to see the whole thing up front, the complete program for [linear regression in Rust can be found here][lines].
+
+[lines]:  https://github.com/cowlet/lines
+
+The one short-cut I'll take is to use the [`la` library for representing matrices and performing the SVD decomposition][la]. This is because the `Matrix` type has helpful functions, and the calculations for the three SVD matrices are a bit tedious. If you are very keen, [please check the source for the SVD calculations here][svd-code].
 
 [la]:     https://github.com/xasmx/rust-la
-[lines]:  https://github.com/cowlet/lines
+[svd-code]: https://github.com/xasmx/rust-la/blob/master/src/decomp/svd.rs
 
 ### Reading data in Rust
 
@@ -188,9 +192,9 @@ fn parse_file(file: &str) -> Result<Matrix<f64>, Box<Error>> {
     let mut reader = csv::Reader::from_reader(file).has_headers(false);
 
     let lines = try!(reader.decode().collect::<csv::Result<Vec<(f64, f64)>>>());
-    let data = lines.iter().fold(Vec::<f64>::new(), |mut xs, l| {
-        xs.push(l.0);
-        xs.push(l.1);
+    let data = lines.iter().fold(Vec::<f64>::new(), |mut xs, line| {
+        xs.push(line.0);
+        xs.push(line.1);
         xs
     });
 
@@ -252,6 +256,12 @@ fn generate_x_matrix(xs: &Matrix<f64>, order: usize) -> Matrix<f64> {
 }
 {% endhighlight %}
 
+This looks scary at first glance, but it's really not so bad! This function does three things:
+
+- Creates a function `gen_row` which takes one parameter `x`, and returns a vector of values of $$x^i$$. `i` runs from 0 up to `order` inclusive, so this function will generate a row of the $$\mathbf{x}$$ matrix with the right number of columns for a given polynomial order.
+- For each value in `xs`, call the new function `gen_row` and concatenate together all the resulting values.
+- Reshape the concatenated values into a `Matrix` of appropriate dimensions. 
+
 The final step is to calculate the $$\mathbf{\beta}$$ vector, as follows:
 
 {% highlight rust %}
@@ -261,7 +271,7 @@ let betas = linear_regression(&xs, &ys);
 The corresponding `linear_regression` function does a few different things:
 
 - Use the `la` library to perform SVD, and extract the corresponding `u`, `s`, and `v` matrices,
-- The `s` matrix is returned with dimensions $$n \times r$$. Since $$r$$ and $$n$$ may be different values, cut the `s` matrix down to size ($$r \times r$$) and call it `s_hat`,
+- The `s` matrix is returned with dimensions $$n \times r$$, although all rows after row $$r$$ contain zeros. Cut the `s` matrix down to size ($$r \times r$$) and call it `s_hat`,
 - Calculate the vector of $$\hat{\alpha}$$ values and call it `alpha`,
 - Divide all values in `alpha` by the corresponding value in the diagonal matrix `s_hat`, and format the vector back into a `Matrix`,
 - Multiply all these values by the corresponding value in `v`.
@@ -309,7 +319,7 @@ let line = { |x: f64| (0..(order+1)).fold(0.0, |sum, i| sum + betas.get(i, 0) * 
 let max_x = data.get_columns(0).get_data().iter().fold(0.0f64, |pmax, x| x.max(pmax) ) + 1.0;
 {% endhighlight %}
 
-- Create a series of x values with regular steps of 0.1 between them:
+- Create a series of x values between 0 and `max_x` in steps of 0.1:
 
 {% highlight rust %}
 let mut x_steps = vec![];
@@ -347,4 +357,12 @@ Which can generate something like this!
 <figure>
 <img src="/assets/order3_a.png" alt="3rd order linear regression">
 </figure>
+
+## Final thoughts
+
+The goal of this was to learn some Rust and get a deeper understanding of linear regression at the same time. I feel I've succeeded with both of these, and I'm always happier using a technique on a dataset if I fully understand what it is doing. The [full program for linear regression in Rust can be found here][lines].
+
+Two of the things I really like about using Rust are the explicit typing, and explicit mutability. From the first, I know that if my program runs, every function is accepting and returning exactly the type of variable that I intended it to. From the second, I know that I'm only making changes to variables I have intentionally marked as `mut`. While these features don't eliminate bugs entirely, I can be a lot more certain that I haven't accidentally switched variable names, and I'm performing operations on the data I think I am.
+
+In total, these features help me to be more confident that a running program is a correct program. While a test suite can build confidence that certain inputs are handled correctly, tests plus the type system and memory checking give confidence that the program will work as intended for all inputs.
 
