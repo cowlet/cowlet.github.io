@@ -351,3 +351,41 @@ input[type=submit]:hover {
     padding: 0 1em;
   }
 }
+
+@media (min-width: 768px) {
+  .square-figure {
+    max-width: 75%;
+    margin: auto;
+  }
+}
+.hidden {
+  display: none;
+}
+.tabs {
+  list-style: none;
+  display: flex;
+  margin-bottom: 1em;
+}
+.tabs__tab {
+  background: #ddd;
+  flex: 1;
+  color: #222;
+  padding: 0.5em 1em;
+  border: 1px solid #999;
+}
+.tabs__tab:not(:first-of-type) {
+  border-left: none;
+}
+.tabs__tab:hover {
+  border: 1px solid #777;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+.tabs__tab:focus {
+  border: 1px solid #777;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  outline: none;
+}
+.tabs__tab.current {
+  background: white;
+  font-weight: bold;
+}
